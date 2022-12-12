@@ -1,0 +1,64 @@
+.search-form {
+  padding: 10px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -5px;
+  padding: 0;
+}
+
+.photo-card {
+  display: flex;
+  flex-direction: column;
+
+  margin: 5px;
+
+  @media screen and (max-width: 767px) {
+    flex-basis: calc((100% - 1 * 10px) / 1);
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 2 * 10px) / 2);
+  }
+
+  @media screen and (min-width: 1200px) {
+    flex-basis: calc((100% - 3 * 10px) / 3);
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 5px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.picture {
+  height: 350px;
+  object-fit: cover;
+}
+
+.load-more {
+  width: 150px;
+  height: 30px;
+}
+
+.hide {
+  display: none;
+}
+
+// img origin 640x360
+// 1280

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-async function fetchImages(q = 'css') {
+async function fetchImages(q, page) {
   // prettier-ignore
 
   const BASIC_URL = `https://pixabay.com/api/`;
@@ -8,10 +8,15 @@ async function fetchImages(q = 'css') {
   const image_type = 'photo';
   const orientation = 'horizontal';
   const safesearch = 'true';
-  const URL = `${BASIC_URL}?key=${key}&q=${q}&image_type=${image_type}&orientation${orientation}&safesearch=${safesearch}`;
+  // const page = 4;
+  const per_page = 4;
+
+  // prettier-ignore
+  const URL = `${BASIC_URL}?key=${key}&q=${q}&image_type=${image_type}&orientation${orientation}&safesearch=${safesearch}&page=${page}&per_page=${per_page}`;
 
   const response = await axios.get(URL);
   return response;
 }
 
 export default { fetchImages };
+// join('\r\n');

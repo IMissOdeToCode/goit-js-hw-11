@@ -21,8 +21,8 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
-}
 
-.search-form {
-  padding: 10px;
+  text-align: center;
+  margin: 0;
+  padding: 15px;
 }
