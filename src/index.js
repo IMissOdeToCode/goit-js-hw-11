@@ -25,9 +25,16 @@ function onSubmitForm(event) {
   event.preventDefault();
 
   refs.gallery.innerHTML = '';
-  const q = refs.input.value || 'cat';
+  refs.moreButton.classList.add('hide');
+  const q = refs.input.value.trim();
+  refs.input.value = q;
 
-  refs.moreButton.classList.remove('hide');
+  console.log(q);
+  if (q === '') {
+    Notiflix.Notify.failure(`What we are looking for?`);
+    refs.form.reset();
+    return;
+  }
 
   API.fetchImages(q, PAGE, per_page).then(response => {
     if (response.data.hits.length === 0) {
@@ -40,6 +47,8 @@ function onSubmitForm(event) {
     Notiflix.Notify.success(
       `Hooray! We found ${response.data.totalHits} images.`
     );
+    refs.moreButton.classList.remove('hide');
+
     if (PAGE * per_page >= response.data.totalHits) {
       Notiflix.Notify.info(
         `We're sorry, but you've reached the end of search results.`
@@ -64,7 +73,9 @@ function render(response) {
 
 function onMoreClick() {
   PAGE += 1;
+
   const q = refs.input.value || 'cat';
+
   API.fetchImages(q, PAGE, per_page).then(response => {
     if (response.data.hits.length === 0) {
       refs.moreButton.classList.add('hide');
